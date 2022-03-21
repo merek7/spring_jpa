@@ -1,11 +1,20 @@
 package coderland.demo;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Etudiant")
-@Table(name = "student",
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "etudiant",
         uniqueConstraints =
                 {
                         @UniqueConstraint(name = "unique_email_etudiant", columnNames ="email")
@@ -28,17 +37,17 @@ public class Etudiant {
     )
     private Long id;
     @Column(
-            name = "Nom",
-            nullable = false,
-            columnDefinition = "TEXT"
+            name = "nom",
+            nullable = false
+
     )
-    private String Nom;
+    private String nom;
     @Column(
             name = "prenom",
-            nullable = false,
-            columnDefinition = "TEXT"
+            nullable = false
+
     )
-    private String Prenom;
+    private String prenom;
     @Column(
             name = "email",
             nullable = false
@@ -50,66 +59,4 @@ public class Etudiant {
     )
     private Integer age;
 
-    public Etudiant() {
-    }
-
-    public Etudiant (Long id, String Nom, String Prenom, String email, Integer age)
-    {
-        this.id=id;
-        this.Nom=Nom;
-        this.Prenom=Prenom;
-        this.email=email;
-        this.age=age;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNom() {
-        return Nom;
-    }
-
-    public void setNom(String nom) {
-        Nom = nom;
-    }
-
-    public String getPrenom() {
-        return Prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        Prenom = prenom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "Etudiant{" +
-                "id=" + id +
-                ", Nom='" + Nom + '\'' +
-                ", Prenom='" + Prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
