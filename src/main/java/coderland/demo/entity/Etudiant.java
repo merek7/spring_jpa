@@ -1,4 +1,4 @@
-package coderland.demo;
+package coderland.demo.entity;
 
 import javax.persistence.*;
 
